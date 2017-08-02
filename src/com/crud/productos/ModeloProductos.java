@@ -148,7 +148,7 @@ public class ModeloProductos {
 				String importado = rs.getString(6);
 				
 				
-				prod = new Productos(seccion, nombProd, precio, fecha, importado);
+				prod = new Productos(codProd, seccion, nombProd, precio, fecha, importado);
 			
 			}else {
 				throw new Exception("No se ha encontrado el producto seleccionado " + cArticulo);
@@ -180,11 +180,10 @@ public class ModeloProductos {
 			
 			/****Creo la sentencia y statement****/
 			String sql = "UPDATE PRODUCTOS SET seccion = ?,"
-										+ "SET nombrearticulo = ?,"
-										+ "SET precio = ?,"
-										+ "SET fecha = ?,"
-										+ "SET importado = ?,"
-										+ ")"
+										+ "nombrearticulo = ?,"
+										+ "precio = ?,"
+										+ "fecha = ?,"
+										+ "importado = ?"
 										+ "WHERE codigoarticulo = ?";
 					
 			st = conexion.prepareStatement(sql);
