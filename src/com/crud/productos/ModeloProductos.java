@@ -185,7 +185,7 @@ public class ModeloProductos {
 										+ "SET fecha = ?,"
 										+ "SET importado = ?,"
 										+ ")"
-										+ "WHERE codigoarticulo = '" + productoActualizado.getCodArticulo() + "'";
+										+ "WHERE codigoarticulo = ?";
 					
 			st = conexion.prepareStatement(sql);
 				
@@ -204,6 +204,8 @@ public class ModeloProductos {
 			st.setDate(4, fechaConvertida);
 			
 			st.setString(5, productoActualizado.getImportado());
+			
+			st.setString(6, productoActualizado.getCodArticulo());
 			
 			/*****Ejecuto sentencia sql****/
 			
