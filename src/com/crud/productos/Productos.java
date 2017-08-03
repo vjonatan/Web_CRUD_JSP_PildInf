@@ -30,6 +30,11 @@ public class Productos {
 		this.importado = importado;
 	}
 	
+	public Productos(String codArt) {
+
+		this.codArticulo = codArt;
+	}
+
 	public String getCodArticulo() {
 		return codArticulo;
 	}

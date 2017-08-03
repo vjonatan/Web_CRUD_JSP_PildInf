@@ -79,6 +79,10 @@ public class ControladorProductos extends HttpServlet {
 			case "actualizarBBDD":
 				actualizarProducto(request, response);
 				break;
+				
+			case "eliminarBBDD":
+				eliminarProducto(request, response);
+				break;
 	
 			default:
 				obtenerProductos(request, response);
@@ -88,6 +92,32 @@ public class ControladorProductos extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+		
+	}
+
+
+
+	private void eliminarProducto(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		// leer el producto que viene del formulario
+		String codArt = request.getParameter("codArticulo");
+		
+		
+		// crear objeto producto para actualizar
+		Productos productoEliminar = new Productos(codArt);
+		
+		
+		// enviar al modelo el objeto y actualizar el producto
+		try {
+			modeloProductos.eliminarProducto(productoEliminar);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// mostrar listado de productos
+		obtenerProductos(request, response);
 		
 	}
 
@@ -121,6 +151,7 @@ public class ControladorProductos extends HttpServlet {
 		
 		// crear objeto producto para actualizar
 		Productos productoActualizado = new Productos(codArt, seccion, nombreArt, precio, fecha, importado);
+		
 		
 		// enviar al modelo el objeto y actualizar el producto
 		try {

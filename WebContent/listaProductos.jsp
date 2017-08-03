@@ -44,6 +44,13 @@
 				<c:param name="CArticulo" value="${tempProd.codArticulo}"></c:param>
 			
 			</c:url>
+			
+			<c:url var="linkTempEliminar" value="ControladorProductos">
+			
+				<c:param name="instruccion" value="eliminarBBDD"></c:param>
+				<c:param name="CArticulo" value="${tempProd.codArticulo}"></c:param>
+			
+			</c:url>			
 		
 			<tr>
 				<td>${tempProd.codArticulo}</td>
@@ -54,6 +61,7 @@
 				<td>${tempProd.importado}</td>
 				<td>
 					<button class="btn btn-primary" onclick="window.location.href='${linkTemp}'">Edit</button>
+					<button class="btn btn-primary" onclick="window.location.href='${linkTempEliminar}'">Delete</button>
 				</td>
 			</tr>
 		</c:forEach>

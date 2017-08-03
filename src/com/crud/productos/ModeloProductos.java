@@ -214,9 +214,11 @@ public class ModeloProductos {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		
-		
-		
+						
+	}
+
+	public void eliminarProducto(Productos productoEliminar) {
+		// TODO Auto-generated method stub
 		
 	}
 	
