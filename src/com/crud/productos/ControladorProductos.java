@@ -101,16 +101,16 @@ public class ControladorProductos extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		// leer el producto que viene del formulario
-		String codArt = request.getParameter("codArticulo");
+		String codArt = request.getParameter("CArticulo");
 		
 		
 		// crear objeto producto para actualizar
-		Productos productoEliminar = new Productos(codArt);
+		//Productos productoEliminar = new Productos(codArt);
 		
 		
 		// enviar al modelo el objeto y actualizar el producto
 		try {
-			modeloProductos.eliminarProducto(productoEliminar);
+			modeloProductos.eliminarProducto(codArt);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

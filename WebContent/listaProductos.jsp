@@ -17,15 +17,17 @@
 	
 <body>
 
-<div class="container-fluid-main">
-
-	<div class="row">
-		<button  class="btn btn-primary" onclick="window.location.href='insertar_registro.jsp'">Insertar Registro</button>
-		<button  class="btn btn-default">Reestablecer</button>
-	</div>
-
+<div class="container-fluid-lista-prod">
 	
-	<table class="table table-bordered">
+	<div class="container espacio-div">
+		<div class="row">
+			<button  class="btn btn-primary" onclick="window.location.href='insertar_registro.jsp'">Insertar Registro</button>
+			<button  class="btn btn-default">Reestablecer</button>
+		</div>
+	</div>
+	
+	<table class="table table-hover">
+		
 		<tr>
 			<th>Codigo Articulo</th>
 			<th>Seccion</th>
@@ -61,7 +63,7 @@
 				<td>${tempProd.importado}</td>
 				<td>
 					<button class="btn btn-primary" onclick="window.location.href='${linkTemp}'">Edit</button>
-					<button class="btn btn-primary" onclick="window.location.href='${linkTempEliminar}'">Delete</button>
+					<button class="btn btn-danger" onclick="window.location.href='${linkTempEliminar}'">Delete</button>
 				</td>
 			</tr>
 		</c:forEach>
