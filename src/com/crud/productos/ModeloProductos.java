@@ -24,32 +24,42 @@ public class ModeloProductos {
 		
 		ResultSet rs = null;
 		
-		/****Creo la conexion****/
+		try {
+					
 		
-		conexion = origenDatos.getConnection();
-		
-		/****Creo la sentencia y statement****/
-		
-		String sql = "SELECT * FROM PRODUCTOS";
-		st = conexion.createStatement();
-		
-		/*****Ejecuto sentencia sql****/
-		
-		rs = st.executeQuery(sql);
-		
-		while(rs.next()){
+			/****Creo la conexion****/
 			
-			String codProd = rs.getString(1);			
-			String seccion = rs.getString(2);
-			String nombProd = rs.getString(3);
-			Double precio = rs.getDouble(4);
-			Date fecha = rs.getDate(5);
-			String importado = rs.getString(6);
+			conexion = origenDatos.getConnection();
 			
+			/****Creo la sentencia y statement****/
 			
-			Productos tempProd = new Productos(codProd, seccion, nombProd, precio, fecha, importado);
+			String sql = "SELECT * FROM PRODUCTOS";
+			st = conexion.createStatement();
 			
-			productos.add(tempProd);
+			/*****Ejecuto sentencia sql****/
+			
+			rs = st.executeQuery(sql);
+					
+			while(rs.next()){
+				
+				String codProd = rs.getString(1);			
+				String seccion = rs.getString(2);
+				String nombProd = rs.getString(3);
+				Double precio = rs.getDouble(4);
+				Date fecha = rs.getDate(5);
+				String importado = rs.getString(6);
+				
+				
+				Productos tempProd = new Productos(codProd, seccion, nombProd, precio, fecha, importado);
+				
+				productos.add(tempProd);
+				
+			} 
+		
+		} finally {
+			
+			st.close();
+			conexion.close();
 			
 		}
 		
@@ -57,7 +67,7 @@ public class ModeloProductos {
 				
 	}
 
-	public void agregarProducto(Productos nuevoProducto){
+	public void agregarProducto(Productos nuevoProducto) throws Exception {
 		// TODO Auto-generated method stub
 		
 		Connection conexion = null;
@@ -100,7 +110,14 @@ public class ModeloProductos {
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
+		
+		} finally {
+			
+			st.close();
+			conexion.close();
+			
 		}		
 		
 	}
@@ -156,9 +173,16 @@ public class ModeloProductos {
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			System.out.println("No se puedo recuperar producto cod: " + cArticulo);
 			System.out.println("Error: " + e.getMessage());
+		
+		} finally {
+			
+			st.close();
+			conexion.close();
+			
 		}		
 		
 		return prod;
@@ -213,11 +237,16 @@ public class ModeloProductos {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+		} finally {
+			
+			st.close();
+			conexion.close();
 		}		
 						
 	}
 
-	public void eliminarProducto(String codProd) {
+	public void eliminarProducto(String codProd) throws Exception {
 		// TODO Auto-generated method stub
 		
 		Connection conexion = null;
@@ -251,7 +280,13 @@ public class ModeloProductos {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}								
+			
+		} finally {
+			
+			st.close();
+			conexion.close();
+			
+		}
 		
 	}
 	

@@ -232,7 +232,12 @@ public class ControladorProductos extends HttpServlet {
 		
 		//enviar al modelo el objeto y registrarlo en la BBDD
 		
-		modeloProductos.agregarProducto(nuevoProducto);
+		try {
+			modeloProductos.agregarProducto(nuevoProducto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		//volver al listado de Productos
